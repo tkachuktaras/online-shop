@@ -5,7 +5,8 @@
         @include('inc.admin-panel-buttons')
     </div>
 
-    <div class="container">
+    <div class="container mt-3">
+        <a href="{{ route('admin-panel-users-create') }}" class="btn btn-success">Add new user</a>
         <table class="table table-bordered table-striped mt-3">
             <thead>
             <tr>
@@ -42,6 +43,7 @@
 
 
         </table>
+        {{ $users->links() }}
     </div>
 
 @endsection
