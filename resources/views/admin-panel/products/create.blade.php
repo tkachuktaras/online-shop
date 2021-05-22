@@ -2,44 +2,36 @@
 
 @section('content')
     <div class="container">
-        <h2>Create user</h2>
+        <h2>Add product</h2>
     </div>
     @include('layouts.errors')
     <div class="container">
-        <form action="{{ route('user.store') }}" method="post">
+        <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div>
                 <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" class="form-control" name="first_name" placeholder="">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="title" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" name="second_name" placeholder="">
+                    <label>Image</label>
+                    <input type="file" class="form-control-file" name="img" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" class="form-control" name="email" placeholder="">
+                    <label>Description</label>
+                    <textarea class="form-control" name="description"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="">
+                    <label>Price</label>
+                    <input type="text" class="form-control" name="price" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" class="form-control" name="password_confirmation" placeholder="">
+                    <label>Quantity</label>
+                    <input type="text" class="form-control" name="quantity" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" class="form-control" name="phone_number" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label>Money Amount</label>
-                    <input type="text" class="form-control" name="money_amount" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label>Is Admin</label>
-                    <input type="checkbox" name="is_admin" placeholder="">
+                    <label>Category ID</label>
+                    <input type="text" class="form-control" name="category_id" placeholder="">
                 </div>
             </div>
             <div>

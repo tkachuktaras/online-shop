@@ -7,10 +7,12 @@
 
 
     <div class="container mt-3">
-        <a href="{{ route('user.create') }}" class="btn btn-success">Add new user</a>
+        <a href="{{ route('user.create') }}" class="btn btn-success">Add new User</a>
         <table class="table table-bordered table-striped mt-3">
             <thead>
             <tr>
+
+
                 <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -34,7 +36,7 @@
                     <td>{{$user->is_admin}}</td>
                     <td>
                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                        <form action="{{ route('user.destroy', $user->id) }}" method="post" style="display: inline;">
                             @csrf
                             <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger">
                                     Delete
@@ -47,6 +49,7 @@
 
 
         </table>
+        {{ $users->links() }}
     </div>
 
 @endsection
