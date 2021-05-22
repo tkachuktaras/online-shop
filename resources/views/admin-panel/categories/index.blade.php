@@ -33,13 +33,10 @@
                     <td>{{$user->money_amount}}</td>
                     <td>{{$user->is_admin}}</td>
                     <td>
-                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('user.destroy', $user->id) }}" method="post">
-                            @csrf
-                            <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger">
-                                    Delete
-                            </button>
-                        </form>
+                        <a href="http://young-tor-50341.herokuapp.com/employees/6/edit" class="btn btn-warning">Edit</a>
+                        <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger">
+                                Delete
+                        </button>
                     </td>
                 </tr>
             @endforeach
@@ -47,6 +44,7 @@
 
 
         </table>
+        {{ $users->links() }}
     </div>
 
 @endsection
