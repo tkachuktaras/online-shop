@@ -6,6 +6,8 @@ use App\Category;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -25,9 +27,17 @@ class CategoryController extends Controller
     public function store(CategoryRequest $req){
         $categories = new Category;
         $categories->name = $req->input('name');
+        $categories->description = $req->input('description');
 
         $categories->save();
         return redirect()->route('category.index');
+    }
+
+    public function show($id)
+    {
+        $products = Product::paginate(10000)->where('category_id', $id);
+        $categories = new Category;
+        return view('admin-panel.categories.show', ['products' => $products], ['categories' => $categories->find($id)]);
     }
 
     public function edit($id){
@@ -38,6 +48,7 @@ class CategoryController extends Controller
     public function update(Request $req, $id){
         $categories = Category::find($id);
         $categories->name = $req->input('name');
+        $categories->description = $req->input('description');
 
         $categories->save();
 

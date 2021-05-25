@@ -33,6 +33,7 @@ Route::middleware('checkAdmin')->group(function () {
     Route::get('admin-panel/category', 'CategoryController@index')->name('category.index');
     Route::get('admin-panel/category/create', 'CategoryController@create')->name('category.create');
     Route::get('admin-panel/category/{category}/edit', 'CategoryController@edit')->name('category.edit');
+    Route::get('admin-panel/category/{category}/show', 'CategoryController@show')->name('category.show');
 
     Route::post('admin-panel/category', 'CategoryController@store')->name('category.store');
     Route::post('admin-panel/category/{category}/update', 'CategoryController@update')->name('category.update');

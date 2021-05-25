@@ -38,7 +38,7 @@
                     <td class="description">{{$product->description}}</td>
                     <td>{{$product->price}}</td>
                     <td>{{$product->quantity}}</td>
-                    <td>{{$product->category_id}}</td>
+                    <td><a href="{{ route('category.show', $product->category_id) }}" class="btn btn-warning">ID = {{$product->category_id}}</a></td>
                     <td>
                         <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning">Edit</a>
                         <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger">

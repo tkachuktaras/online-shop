@@ -13,6 +13,10 @@
                     <label>Name</label>
                     <input type="text" class="form-control" name="name" value="{{$categories->name}}">
                 </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" name="description">{{$categories->description}}</textarea>
+                </div>
             </div>
             <div>
                 <button class="btn btn-warning pull-right">Save</button>

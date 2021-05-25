@@ -32,7 +32,7 @@
                     <td>{{$user->second_name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone_number}}</td>
-                    <td>{{$user->money_amount}}</td>
+                    <td>{{$user->money_amount}} UAH</td>
                     <td>{{$user->is_admin}}</td>
                     <td>
                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning">Edit</a>
