@@ -5,37 +5,17 @@
         @include('inc.admin-panel-buttons')
     </div>
 
-
     <div class="container mt-3">
-        <table class="table table-bordered table-striped mt-3">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <style>
-                        .td_lol {
-                            width: 60%;
-                        }
-                    </style>
-                    <td>{{$categories->id}}</td>
-                    <td>{{$categories->name}}</td>
-                    <td class="td_lol">{{$categories->description}}</td>
-                    <td>
-                        <a href="{{ route('category.edit', $categories->id) }}" class="btn btn-warning">Edit</a>
-                        <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger">
-                                Delete
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="p-4 p-md-5 text-white rounded bg-secondary">
+            <div class=" px-0">
+                <h1 class="display-4 fst-italic">{{$category->name}}</h1>
+                <p class=>{{$category->description}}</p>
+                <a href="{{ route('category.edit', $category->id) }}" class="btn btn btn-outline-light">Edit</a>
+                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn btn-outline-light">
+                    Delete
+                </button>
+            </div>
+        </div>
 
         <table class="table table-bordered table-striped mt-3">
             <thead>
@@ -78,8 +58,8 @@
                 </tr>
             @endforeach
             </tbody>
-
         </table>
+        {{ $products->links() }}
     </div>
 
 @endsection

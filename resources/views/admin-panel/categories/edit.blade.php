@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('category.update', ['id' => $categories->id]) }}" method="POST">
+        <form action="{{ route('category.update', ['id' => $category->id]) }}" method="POST">
             @csrf
             <div>
                 <h3 class="box-title">Edit Category</h3>
@@ -11,11 +11,11 @@
             <div>
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" name="name" value="{{$categories->name}}">
+                    <input type="text" class="form-control" name="name" value="{{$category->name}}">
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="description">{{$categories->description}}</textarea>
+                    <textarea class="form-control" name="description">{{$category->description}}</textarea>
                 </div>
             </div>
             <div>

@@ -37,7 +37,7 @@
                     <!--<td>{{$product->description}}</td>-->
                     <td>{{$product->price}} UAH per kg</td>
                     <td>{{$product->quantity}} pieces</td>
-                    <td><a href="{{ route('category.show', $product->category_id) }}" class="btn btn-warning">ID = {{$product->category_id}}</a></td>
+                    <td><a href="{{ route('category.show', $product->category_id) }}" class="link-primary">ID = {{$product->category_id}}</a></td>
                     <td>
                         <a href="{{ route('product.show', $product->id) }}" class="btn btn-primary">Show</a>
                         <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning">Edit</a>

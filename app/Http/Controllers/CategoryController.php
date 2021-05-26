@@ -7,7 +7,6 @@ use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Product;
-use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -15,7 +14,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::paginate(4);
+        $categories = Category::paginate(10);
         return view('admin-panel.categories.index', ['categories' => $categories]);
     }
 
@@ -25,32 +24,32 @@ class CategoryController extends Controller
     }
 
     public function store(CategoryRequest $req){
-        $categories = new Category;
-        $categories->name = $req->input('name');
-        $categories->description = $req->input('description');
+        $category = new Category;
+        $category->name = $req->input('name');
+        $category->description = $req->input('description');
 
-        $categories->save();
+        $category->save();
         return redirect()->route('category.index');
     }
 
     public function show($id)
     {
-        $products = Product::paginate(10000)->where('category_id', $id);
-        $categories = new Category;
-        return view('admin-panel.categories.show', ['products' => $products], ['categories' => $categories->find($id)]);
+        $products = Product::where('category_id', $id)->paginate(10);
+        $category = Category::find($id);
+        return view('admin-panel.categories.show', ['products' => $products, 'category' => $category]);
     }
 
     public function edit($id){
-        $categories = new Category;
-        return view('admin-panel.categories.edit', ['categories' => $categories->find($id)]);
+        $category = Category::find($id);
+        return view('admin-panel.categories.edit', ['category' => $category]);
     }
 
     public function update(Request $req, $id){
-        $categories = Category::find($id);
-        $categories->name = $req->input('name');
-        $categories->description = $req->input('description');
+        $category = Category::find($id);
+        $category->name = $req->input('name');
+        $category->description = $req->input('description');
 
-        $categories->save();
+        $category->save();
 
         return redirect()->route('category.index');
     }

@@ -31,7 +31,11 @@
                 </div>
                 <div class="form-group">
                     <label>Is Admin</label>
-                    <input type="checkbox" name="is_admin" placeholder="" value="{{$user->is_admin}}">
+                    @if ($user->is_admin == 1)
+                        <input type="checkbox" name="is_admin" placeholder="" checked>
+                    @else
+                        <input type="checkbox" name="is_admin" placeholder="">
+                    @endif
                 </div>
             </div>
             <div>
