@@ -1,10 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app-admin-panel')
 
 @section('content')
-    <div class="container">
-        <h2>Create user</h2>
-    </div>
+    @section('h1-text')
+        Create user
+    @endsection
+
     @include('layouts.errors')
+
     <div class="container">
         <form action="{{ route('user.store') }}" method="post">
             @csrf

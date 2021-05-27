@@ -1,10 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app-admin-panel')
 
 @section('content')
-    <div class="container">
-        <h2>Add product</h2>
-    </div>
+    @section('h1-text')
+        Create product
+    @endsection
+
     @include('layouts.errors')
+
     <div class="container">
         <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
             @csrf

@@ -4,12 +4,21 @@
             <img src="{{ asset('/img/logo.png') }}" height="40" width="40"> <span class="ml-2">Online-Shop</span>
         </a>
 
+        <style type="text/css">
+            .link {
+                color: #1d2124;
+            }
+            .link:hover {
+                color: #828281;
+            }
+        </style>
+
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+            <li><a href="#" class="nav-link px-2 link">Home</a></li>
+            <li><a href="#" class="nav-link px-2 link">Features</a></li>
+            <li><a href="#" class="nav-link px-2 link">Pricing</a></li>
+            <li><a href="#" class="nav-link px-2 link">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 link">About</a></li>
         </ul>
 
 
