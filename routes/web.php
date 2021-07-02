@@ -1,12 +1,15 @@
 <?php
 
-Route::get('/', function () {
-    return view('home');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/basket', 'BasketController@index')->name('basket');
+Route::post('/update-basket/{id}', 'BasketController@update')->name('update-basket');
+Route::post('/remove-from-basket/{id}', 'BasketController@remove')->name('remove-from-basket');
+Route::post('/add-to-basket', 'BasketController@addToBasket')->name('add-to-basket');
+
 
 Route::middleware('checkAdmin')->group(function () {
     Route::get('admin-panel/user', 'UserController@index')->name('user.index');

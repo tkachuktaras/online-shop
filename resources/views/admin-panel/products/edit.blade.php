@@ -16,10 +16,10 @@
                 <label>Title</label>
                 <input type="text" class="form-control" name="title" value="{{ $product->title }}">
             </div>
-            <!--<div class="form-group">
+            <div class="form-group">
                 <label>Image</label>
                 <input type="file" class="form-control-file" name="img" value="/storage/images/{{$product->img}}">
-            </div>-->
+            </div>
             <div class="form-group">
                 <label>Description</label>
                 <textarea class="form-control" name="description">{{ $product->description }}</textarea>
