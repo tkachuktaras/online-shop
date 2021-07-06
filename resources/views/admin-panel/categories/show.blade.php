@@ -6,9 +6,6 @@
             <h1 class="display-4 fst-italic">{{$category->name}}</h1>
             <p class=>{{$category->description}}</p>
             <a href="{{ route('category.edit', $category->id) }}" class="btn btn btn-outline-light">Edit</a>
-            <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn btn-outline-light">
-                Delete
-            </button>
         </div>
     </div>
 

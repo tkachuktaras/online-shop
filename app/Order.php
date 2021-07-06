@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Product extends Model
+class Order extends Model
 {
     use Notifiable;
 
@@ -15,13 +15,12 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'img', 'description', 'price', 'quantity', 'category_id'
+        'user_id'
     ];
 
     public function orderDetails(){
-        return $this->hasOne(OrderDetails::class, 'product_id', 'id');
+        return $this->hasMany(OrderDetails::class, 'order_id', 'id');
     }
 
-    protected $table = 'products';
-
+    protected $table = 'orders';
 }

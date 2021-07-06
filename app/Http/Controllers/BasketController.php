@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\OrderDetails;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -57,9 +59,35 @@ class BasketController extends Controller
         return redirect()->route('basket');
     }
 
-    public function procced(){
+    public function proceed(){
         $user_id = Auth::id();
+        $wallet = User::where('id', $user_id)->first()->money_amount;
         $items = \Cart::session($user_id)->getContent();
+
+
+        $user = User::where('id', $user_id)->first();
+        $user->money_amount = $user->money_amount - \Cart::session($user_id)->getSubTotal();
+        $user->save();
+
+
+        $order = new Order();
+        $order->user_id = $user_id;
+        $order->save();
+        $order = Order::where('user_id', $user_id)->orderBy('created_at', 'desc')->first()->id;
+
+
+        foreach($items as $row) {
+            $product = Product::where('id', $row->id)->first();
+            $order_details = new OrderDetails();
+            $order_details->order_id = $order;
+            $order_details->product_id = $row->id;
+            $order_details->quantity = $row->quantity;
+            $product->quantity = $product->quantity - $row->quantity;
+            $order_details->save();
+            $product->save();
+            \Cart::session($user_id)->remove($row->id);
+        }
+
         return redirect()->route('basket');
     }
 }

@@ -9,7 +9,7 @@ Route::get('/basket', 'BasketController@index')->name('basket');
 Route::post('/update-basket/{id}', 'BasketController@update')->name('update-basket');
 Route::post('/remove-from-basket/{id}', 'BasketController@remove')->name('remove-from-basket');
 Route::post('/add-to-basket', 'BasketController@addToBasket')->name('add-to-basket');
-
+Route::post('/proceed', 'BasketController@proceed')->name('proceed');
 
 Route::middleware('checkAdmin')->group(function () {
     Route::get('admin-panel/user', 'UserController@index')->name('user.index');
@@ -41,4 +41,13 @@ Route::middleware('checkAdmin')->group(function () {
     Route::post('admin-panel/category', 'CategoryController@store')->name('category.store');
     Route::post('admin-panel/category/{category}/update', 'CategoryController@update')->name('category.update');
     Route::post('admin-panel/category/{category}/destroy', 'CategoryController@destroy')->name('category.destroy');
+
+
+
+    Route::get('admin-panel/orders', 'OrderController@index')->name('orders.index');
+    Route::get('admin-panel/orders/{order}/show', 'OrderController@show')->name('orders.show');
+
+
+
+    Route::get('admin-panel/dashboard', 'DashboardController@index')->name('dashboard');
 });

@@ -1,55 +1,42 @@
-@extends('layouts.app')
+@extends('layouts.app-admin-panel')
 
 @section('content')
-    <div class="container">
-        @include('inc.admin-panel-buttons')
+    <div class="p-4 p-md-5 text-white rounded bg-secondary">
+        <div class="px-0">
+            <h1 class="display-4 fst-italic">Order ID: {{ $order->id }}</h1>
+            <p class=>User ID: {{ $order->user_id }}</p>
+        </div>
     </div>
 
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Title</th>
+            <!--<th>Description</th>-->
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
 
-    <div class="container mt-3">
-        <table class="table table-bordered table-striped mt-3">
-            <thead>
+        <tbody>
+            @foreach($order->orderDetails as $items)
             <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Category Id</th>
-                <th>Actions</th>
+                <style>
+                    .img-demo {
+                        width: 70px;
+                        height: 70px;
+                    }
+                </style>
+                <td>{{$items->products->id}}</td>
+                <td><img class="img-demo mx-auto d-block" src="/storage/images/{{$items->products->img}}"></td>
+                <td>{{$items->products->title}}</td>
+            <!--<td>4</td>-->
+                <td>{{$items->products->price}}</td>
+                <td>{{$items->quantity}}</td>
             </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <style>
-                        .img-demo {
-                            width: 70px;
-                            height: 70px;
-                        }
-                        .description {
-                            width: 39%;
-                        }
-                    </style>
-                    <td>{{$product->id}}</td>
-                    <td><img class="img-demo mx-auto d-block" src="/storage/images/{{$product->img}}"></td>
-                    <td>{{$product->title}}</td>
-                    <td class="description">{{$product->description}}</td>
-                    <td>{{$product->price}}</td>
-                    <td>{{$product->quantity}}</td>
-                    <td><a href="{{ route('category.show', $product->category_id) }}" class="link-primary">ID = {{$product->category_id}}</a></td>
-                    <td>
-                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning">Edit</a>
-                        <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger">
-                                Delete
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-
-
-        </table>
-    </div>
-
+            @endforeach
+        </tbody>
+    </table>
 @endsection
