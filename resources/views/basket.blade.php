@@ -9,6 +9,7 @@
 <div class="container pb-5 mt-n2 mt-md-n3">
     <div class="row">
         <div class="col-xl-9 col-md-8">
+
             <h2 class="h6 d-flex flex-wrap justify-content-between align-items-center px-4 py-3 bg-secondary"><span>Products</span><a class="font-size-sm" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left" style="width: 1rem; height: 1rem;"><polyline points="15 18 9 12 15 6"></polyline></svg>Continue shopping</a></h2>
 
             @foreach($items as $row)
@@ -63,6 +64,12 @@
             <h2 class="h6 px-4 py-3 bg-secondary text-center">Subtotal</h2>
             <div class="h3 font-weight-semibold text-center py-3">{{\Cart::getSubTotal()}} UAH</div>
             <hr>
+            @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    {{$errors->first()}}
+                </div>
+            @endif
+
             @if ($items->isNotEmpty())
                 <h3 class="h6 pt-4 font-weight-semibold"><span class="badge badge-success mr-2">Note</span>Additional comments</h3>
                 <textarea class="form-control mb-3" id="order-comments" rows="5"></textarea>

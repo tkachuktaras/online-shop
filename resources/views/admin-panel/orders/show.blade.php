@@ -19,7 +19,6 @@
             <th>Quantity</th>
         </tr>
         </thead>
-
         <tbody>
             @foreach($order->orderDetails as $items)
             <tr>
